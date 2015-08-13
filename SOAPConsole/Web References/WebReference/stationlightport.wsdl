@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="http://unistation.ru/wsdl" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://unistation.ru/wsdl" name="stationlightport" targetNamespace="http://unistation.ru/wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="http://unistation.ru/wsdl" elementFormDefault="qualified" targetNamespace="http://unistation.ru/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetBusStops">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBusStopsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTripId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="TripDate" type="xs:string" />
+            <xs:element name="TripTime" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTripIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTrips">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="TripDate" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTripsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTicketPrice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="TicketKind" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTicketPriceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TicketList" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeactivateOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OrderId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeactivateOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AccountId" type="xs:string" />
+            <xs:element name="sum" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Payment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AccountId" type="xs:string" />
+            <xs:element name="sum" nillable="true" type="xs:string" />
+            <xs:element name="checkid" nillable="true" type="xs:string" />
+            <xs:element name="transactionid" nillable="true" type="xs:string" />
+            <xs:element name="sessionid" nillable="true" type="xs:string" />
+            <xs:element name="paymentmethod" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTripInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="StationId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTripInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFreeSeatsCount">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="TicketKind" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFreeSeatsCountResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckTicketReturn">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TicketId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckTicketReturnResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReturnTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ReturnId" type="xs:string" />
+            <xs:element name="checkid" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReturnTicketResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSalesReport">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="StartDate" type="xs:string" />
+            <xs:element name="EndDate" type="xs:string" />
+            <xs:element name="ReportType" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSalesReportResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSchedule">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetScheduleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDiscountInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="discountcode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDiscountInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStationTrips">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="StationId" type="xs:string" />
+            <xs:element name="StartTimeShift" type="xs:string" />
+            <xs:element name="EndTimeShift" nillable="true" type="xs:string" />
+            <xs:element name="MaxTripsCount" type="xs:string" />
+            <xs:element name="MaxNotActualCount" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStationTripsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ServicePayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ServiceId" type="xs:string" />
+            <xs:element name="sum" nillable="true" type="xs:string" />
+            <xs:element name="checkid" nillable="true" type="xs:string" />
+            <xs:element name="kkmid" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ServicePaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSeatsScheme">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="TicketKind" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSeatsSchemeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllTripsSegments">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllTripsSegmentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Ping">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="MessageText" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AccountId" type="xs:string" />
+            <xs:element name="Tickets" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPrivileges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="DeparturePoint" nillable="true" type="xs:string" />
+            <xs:element name="DestinationPoint" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPrivilegesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckPossibilityOfOrdering">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TripId" type="xs:string" />
+            <xs:element name="DeparturePoint" type="xs:string" />
+            <xs:element name="DestinationPoint" type="xs:string" />
+            <xs:element name="paymentmethod" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckPossibilityOfOrderingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="GetBusStopsRequestMessage">
+    <part name="parameters" element="tns:GetBusStops" />
+  </message>
+  <message name="GetBusStopsResponseMessage">
+    <part name="parameters" element="tns:GetBusStopsResponse" />
+  </message>
+  <message name="GetTripIdRequestMessage">
+    <part name="parameters" element="tns:GetTripId" />
+  </message>
+  <message name="GetTripIdResponseMessage">
+    <part name="parameters" element="tns:GetTripIdResponse" />
+  </message>
+  <message name="GetTripsRequestMessage">
+    <part name="parameters" element="tns:GetTrips" />
+  </message>
+  <message name="GetTripsResponseMessage">
+    <part name="parameters" element="tns:GetTripsResponse" />
+  </message>
+  <message name="GetTicketPriceRequestMessage">
+    <part name="parameters" element="tns:GetTicketPrice" />
+  </message>
+  <message name="GetTicketPriceResponseMessage">
+    <part name="parameters" element="tns:GetTicketPriceResponse" />
+  </message>
+  <message name="GetOrderRequestMessage">
+    <part name="parameters" element="tns:GetOrder" />
+  </message>
+  <message name="GetOrderResponseMessage">
+    <part name="parameters" element="tns:GetOrderResponse" />
+  </message>
+  <message name="DeactivateOrderRequestMessage">
+    <part name="parameters" element="tns:DeactivateOrder" />
+  </message>
+  <message name="DeactivateOrderResponseMessage">
+    <part name="parameters" element="tns:DeactivateOrderResponse" />
+  </message>
+  <message name="CheckOrderRequestMessage">
+    <part name="parameters" element="tns:CheckOrder" />
+  </message>
+  <message name="CheckOrderResponseMessage">
+    <part name="parameters" element="tns:CheckOrderResponse" />
+  </message>
+  <message name="PaymentRequestMessage">
+    <part name="parameters" element="tns:Payment" />
+  </message>
+  <message name="PaymentResponseMessage">
+    <part name="parameters" element="tns:PaymentResponse" />
+  </message>
+  <message name="GetTripInfoRequestMessage">
+    <part name="parameters" element="tns:GetTripInfo" />
+  </message>
+  <message name="GetTripInfoResponseMessage">
+    <part name="parameters" element="tns:GetTripInfoResponse" />
+  </message>
+  <message name="GetFreeSeatsCountRequestMessage">
+    <part name="parameters" element="tns:GetFreeSeatsCount" />
+  </message>
+  <message name="GetFreeSeatsCountResponseMessage">
+    <part name="parameters" element="tns:GetFreeSeatsCountResponse" />
+  </message>
+  <message name="CheckTicketReturnRequestMessage">
+    <part name="parameters" element="tns:CheckTicketReturn" />
+  </message>
+  <message name="CheckTicketReturnResponseMessage">
+    <part name="parameters" element="tns:CheckTicketReturnResponse" />
+  </message>
+  <message name="ReturnTicketRequestMessage">
+    <part name="parameters" element="tns:ReturnTicket" />
+  </message>
+  <message name="ReturnTicketResponseMessage">
+    <part name="parameters" element="tns:ReturnTicketResponse" />
+  </message>
+  <message name="GetSalesReportRequestMessage">
+    <part name="parameters" element="tns:GetSalesReport" />
+  </message>
+  <message name="GetSalesReportResponseMessage">
+    <part name="parameters" element="tns:GetSalesReportResponse" />
+  </message>
+  <message name="GetScheduleRequestMessage">
+    <part name="parameters" element="tns:GetSchedule" />
+  </message>
+  <message name="GetScheduleResponseMessage">
+    <part name="parameters" element="tns:GetScheduleResponse" />
+  </message>
+  <message name="GetDiscountInfoRequestMessage">
+    <part name="parameters" element="tns:GetDiscountInfo" />
+  </message>
+  <message name="GetDiscountInfoResponseMessage">
+    <part name="parameters" element="tns:GetDiscountInfoResponse" />
+  </message>
+  <message name="GetStationTripsRequestMessage">
+    <part name="parameters" element="tns:GetStationTrips" />
+  </message>
+  <message name="GetStationTripsResponseMessage">
+    <part name="parameters" element="tns:GetStationTripsResponse" />
+  </message>
+  <message name="ServicePaymentRequestMessage">
+    <part name="parameters" element="tns:ServicePayment" />
+  </message>
+  <message name="ServicePaymentResponseMessage">
+    <part name="parameters" element="tns:ServicePaymentResponse" />
+  </message>
+  <message name="GetSeatsSchemeRequestMessage">
+    <part name="parameters" element="tns:GetSeatsScheme" />
+  </message>
+  <message name="GetSeatsSchemeResponseMessage">
+    <part name="parameters" element="tns:GetSeatsSchemeResponse" />
+  </message>
+  <message name="GetAllTripsSegmentsRequestMessage">
+    <part name="parameters" element="tns:GetAllTripsSegments" />
+  </message>
+  <message name="GetAllTripsSegmentsResponseMessage">
+    <part name="parameters" element="tns:GetAllTripsSegmentsResponse" />
+  </message>
+  <message name="PingRequestMessage">
+    <part name="parameters" element="tns:Ping" />
+  </message>
+  <message name="PingResponseMessage">
+    <part name="parameters" element="tns:PingResponse" />
+  </message>
+  <message name="ClientMessageRequestMessage">
+    <part name="parameters" element="tns:ClientMessage" />
+  </message>
+  <message name="ClientMessageResponseMessage">
+    <part name="parameters" element="tns:ClientMessageResponse" />
+  </message>
+  <message name="CancelPaymentRequestMessage">
+    <part name="parameters" element="tns:CancelPayment" />
+  </message>
+  <message name="CancelPaymentResponseMessage">
+    <part name="parameters" element="tns:CancelPaymentResponse" />
+  </message>
+  <message name="GetPrivilegesRequestMessage">
+    <part name="parameters" element="tns:GetPrivileges" />
+  </message>
+  <message name="GetPrivilegesResponseMessage">
+    <part name="parameters" element="tns:GetPrivilegesResponse" />
+  </message>
+  <message name="CheckPossibilityOfOrderingRequestMessage">
+    <part name="parameters" element="tns:CheckPossibilityOfOrdering" />
+  </message>
+  <message name="CheckPossibilityOfOrderingResponseMessage">
+    <part name="parameters" element="tns:CheckPossibilityOfOrderingResponse" />
+  </message>
+  <portType name="stationlightportPortType">
+    <operation name="GetBusStops">
+      <input message="tns:GetBusStopsRequestMessage" />
+      <output message="tns:GetBusStopsResponseMessage" />
+    </operation>
+    <operation name="GetTripId">
+      <input message="tns:GetTripIdRequestMessage" />
+      <output message="tns:GetTripIdResponseMessage" />
+    </operation>
+    <operation name="GetTrips">
+      <input message="tns:GetTripsRequestMessage" />
+      <output message="tns:GetTripsResponseMessage" />
+    </operation>
+    <operation name="GetTicketPrice">
+      <input message="tns:GetTicketPriceRequestMessage" />
+      <output message="tns:GetTicketPriceResponseMessage" />
+    </operation>
+    <operation name="GetOrder">
+      <input message="tns:GetOrderRequestMessage" />
+      <output message="tns:GetOrderResponseMessage" />
+    </operation>
+    <operation name="DeactivateOrder">
+      <input message="tns:DeactivateOrderRequestMessage" />
+      <output message="tns:DeactivateOrderResponseMessage" />
+    </operation>
+    <operation name="CheckOrder">
+      <input message="tns:CheckOrderRequestMessage" />
+      <output message="tns:CheckOrderResponseMessage" />
+    </operation>
+    <operation name="Payment">
+      <input message="tns:PaymentRequestMessage" />
+      <output message="tns:PaymentResponseMessage" />
+    </operation>
+    <operation name="GetTripInfo">
+      <input message="tns:GetTripInfoRequestMessage" />
+      <output message="tns:GetTripInfoResponseMessage" />
+    </operation>
+    <operation name="GetFreeSeatsCount">
+      <input message="tns:GetFreeSeatsCountRequestMessage" />
+      <output message="tns:GetFreeSeatsCountResponseMessage" />
+    </operation>
+    <operation name="CheckTicketReturn">
+      <input message="tns:CheckTicketReturnRequestMessage" />
+      <output message="tns:CheckTicketReturnResponseMessage" />
+    </operation>
+    <operation name="ReturnTicket">
+      <input message="tns:ReturnTicketRequestMessage" />
+      <output message="tns:ReturnTicketResponseMessage" />
+    </operation>
+    <operation name="GetSalesReport">
+      <input message="tns:GetSalesReportRequestMessage" />
+      <output message="tns:GetSalesReportResponseMessage" />
+    </operation>
+    <operation name="GetSchedule">
+      <input message="tns:GetScheduleRequestMessage" />
+      <output message="tns:GetScheduleResponseMessage" />
+    </operation>
+    <operation name="GetDiscountInfo">
+      <input message="tns:GetDiscountInfoRequestMessage" />
+      <output message="tns:GetDiscountInfoResponseMessage" />
+    </operation>
+    <operation name="GetStationTrips">
+      <input message="tns:GetStationTripsRequestMessage" />
+      <output message="tns:GetStationTripsResponseMessage" />
+    </operation>
+    <operation name="ServicePayment">
+      <input message="tns:ServicePaymentRequestMessage" />
+      <output message="tns:ServicePaymentResponseMessage" />
+    </operation>
+    <operation name="GetSeatsScheme">
+      <input message="tns:GetSeatsSchemeRequestMessage" />
+      <output message="tns:GetSeatsSchemeResponseMessage" />
+    </operation>
+    <operation name="GetAllTripsSegments">
+      <input message="tns:GetAllTripsSegmentsRequestMessage" />
+      <output message="tns:GetAllTripsSegmentsResponseMessage" />
+    </operation>
+    <operation name="Ping">
+      <input message="tns:PingRequestMessage" />
+      <output message="tns:PingResponseMessage" />
+    </operation>
+    <operation name="ClientMessage">
+      <input message="tns:ClientMessageRequestMessage" />
+      <output message="tns:ClientMessageResponseMessage" />
+    </operation>
+    <operation name="CancelPayment">
+      <input message="tns:CancelPaymentRequestMessage" />
+      <output message="tns:CancelPaymentResponseMessage" />
+    </operation>
+    <operation name="GetPrivileges">
+      <input message="tns:GetPrivilegesRequestMessage" />
+      <output message="tns:GetPrivilegesResponseMessage" />
+    </operation>
+    <operation name="CheckPossibilityOfOrdering">
+      <input message="tns:CheckPossibilityOfOrderingRequestMessage" />
+      <output message="tns:CheckPossibilityOfOrderingResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="stationlightportSoapBinding" type="tns:stationlightportPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetBusStops">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetBusStops" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTripId">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTripId" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTrips">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTrips" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTicketPrice">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTicketPrice" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOrder">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetOrder" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeactivateOrder">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:DeactivateOrder" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckOrder">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckOrder" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Payment">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:Payment" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTripInfo">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTripInfo" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFreeSeatsCount">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetFreeSeatsCount" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckTicketReturn">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckTicketReturn" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReturnTicket">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ReturnTicket" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSalesReport">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSalesReport" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSchedule">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSchedule" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDiscountInfo">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetDiscountInfo" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStationTrips">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetStationTrips" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ServicePayment">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ServicePayment" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSeatsScheme">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSeatsScheme" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllTripsSegments">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetAllTripsSegments" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Ping">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:Ping" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ClientMessage">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ClientMessage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelPayment">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CancelPayment" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPrivileges">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetPrivileges" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckPossibilityOfOrdering">
+      <soapbind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckPossibilityOfOrdering" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="stationlightportSoap12Binding" type="tns:stationlightportPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetBusStops">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetBusStops" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTripId">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTripId" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTrips">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTrips" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTicketPrice">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTicketPrice" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOrder">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetOrder" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeactivateOrder">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:DeactivateOrder" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckOrder">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckOrder" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Payment">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:Payment" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTripInfo">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetTripInfo" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFreeSeatsCount">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetFreeSeatsCount" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckTicketReturn">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckTicketReturn" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReturnTicket">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ReturnTicket" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSalesReport">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSalesReport" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSchedule">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSchedule" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDiscountInfo">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetDiscountInfo" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStationTrips">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetStationTrips" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ServicePayment">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ServicePayment" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSeatsScheme">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetSeatsScheme" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllTripsSegments">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetAllTripsSegments" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Ping">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:Ping" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ClientMessage">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:ClientMessage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelPayment">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CancelPayment" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPrivileges">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:GetPrivileges" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckPossibilityOfOrdering">
+      <soap12bind:operation soapAction="http://unistation.ru/wsdl#stationlightport:CheckPossibilityOfOrdering" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="stationlightport">
+    <port name="stationlightportSoap" binding="tns:stationlightportSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://62.192.35.162:8088/test1c/ws/stationlightport.1cws" />
+    </port>
+    <port name="stationlightportSoap12" binding="tns:stationlightportSoap12Binding">
+      <soap12bind:address location="http://62.192.35.162:8088/test1c/ws/stationlightport.1cws" />
+    </port>
+  </service>
+</definitions>
